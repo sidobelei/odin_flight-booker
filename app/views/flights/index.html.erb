@@ -1,0 +1,14 @@
+<h1>Flight Booker</h1>
+
+<h3>Search Flights</h3>
+<%= form_with(url: flights_path, method: :get) do |form|%>
+    <%= form.label :departure_code, "Departure Airport" %>
+    <%= form.select :departure_code, @departure_airports, include_blank: true %><br><br>
+    <%= form.label :arrival_code, "Arrival Airport" %>
+    <%= form.select :arrival_code, @arrival_airports, include_blank: true %><br><br>
+    <%= form.label :num_tickets, "Tickets" %>
+    <%= form.select :num_tickets, [1, 2, 3, 4] %><br><br>
+    <%= form.label :date %>
+    <%= form.select :date, @dates, include_blank: true %><br><br>
+    <%= form.submit "Search"%>
+<% end %> 
