@@ -12,3 +12,21 @@
     <%= form.select :date, @dates, include_blank: true %><br><br>
     <%= form.submit "Search"%>
 <% end %> 
+
+<% if @flight_list %>
+    <h3>Results</h3>
+    <% if !@flight_list.empty? %> 
+        <%= form_with(url: new_booking_path, method: :get) do |form| %>
+            <% @flight_list.each do |flight| %>
+                <div>
+                    <%= form.radio_button :id, flight[:id] %>
+                    <%= form.label "id_#{flight[:id]}", "#{flight[:departure_code]} -> #{flight[:arrival_code]}, #{flight[:date].to_datetime.to_fs(:long)}" %>
+                </div>
+            <% end %>
+            <%= form.hidden_field :num_tickets, value: @num_tickets %><br>
+            <%= form.submit "Select"%>
+        <% end %>
+    <% else %>
+        <div>No results found.</div>
+    <% end %>
+<% end %>
