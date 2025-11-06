@@ -1,0 +1,22 @@
+<%= link_to "Home", root_path %>
+<%= form_with model: @booking do |form| %>
+    <h2>
+        <%= "#{@flight[:departure_code]} to #{@flight[:arrival_code]}"%>
+    </h2>
+    <div>
+        <%= "#{@flight[:date].to_datetime.to_fs(:long)}" %>
+    </div><br>
+    <h3>Booking Details</h3>
+    <%= form.hidden_field :flight_id, value: @flight[:id]%>    
+    <%= form.fields_for :passengers do |passengers_form| %>
+        <div><b><%= "Passenger #{passengers_form.index + 1}: " %></b></div>
+        <li>
+            <%= passengers_form.label :name %><br>
+            <%= passengers_form.text_field :name %><br>
+
+            <%= passengers_form.label :email %><br>
+            <%= passengers_form.text_field :email %><br><br>
+        </li>
+    <% end %>
+    <%= form.submit %>
+<% end %>
