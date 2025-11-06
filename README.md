@@ -1,24 +1,5 @@
-# README
+# flight-booker
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The goal of this project was to create a simple one way flight booking site.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The purpose of this project was to get practice with populating dropdown menus, radio buttons and setting up nested submissions.
