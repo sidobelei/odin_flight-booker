@@ -8,15 +8,36 @@
     </div><br>
     <h3>Booking Details</h3>
     <%= form.hidden_field :flight_id, value: @flight[:id]%>    
-    <%= form.fields_for :passengers do |passengers_form| %>
-        <div><b><%= "Passenger #{passengers_form.index + 1}: " %></b></div>
-        <li>
-            <%= passengers_form.label :name %><br>
-            <%= passengers_form.text_field :name %><br>
+    <div data-controller="passenger-field">
+        <button type="button" data-action="passenger-field#add">Add Passenger</button><br><br>
+        <div class="passenger-fields-container">
+            <%= form.fields_for :passengers do |passengers_form| %>
+                <div class="passenger-field-container">
+                    <b><%= "Passenger #{passengers_form.index + 1}: " %></b>
+                    <li>
+                        <%= passengers_form.label :name %><br>
+                        <%= passengers_form.text_field :name %><br>
 
-            <%= passengers_form.label :email %><br>
-            <%= passengers_form.text_field :email %><br><br>
-        </li>
-    <% end %>
+                        <%= passengers_form.label :email %><br>
+                        <%= passengers_form.text_field :email %><br><br>
+                    </li>
+                </div>
+            <% end %>
+        </div>
+        <template data-passenger-field-target="template">
+            <%= form.fields_for :passenger do |passengers_form| %>
+                <div class="passenger-field-container">
+                    <b></b>
+                    <li>
+                        <%= passengers_form.label :name %><br>
+                        <%= passengers_form.text_field :name %><br>
+
+                        <%= passengers_form.label :email %><br>
+                        <%= passengers_form.text_field :email %><br><br>
+                    </li>
+                </div>
+            <% end %>
+        </template>    
+    </div>
     <%= form.submit %>
 <% end %>
