@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-    static targets = [ "template" ]
+    static targets = [ "template", "fields"]
 
     add() {
         if (this.numPassengers < 4) {
@@ -41,7 +41,16 @@ export default class extends Controller {
         }
     }
 
+    remove(event) {
+        if (this.numPassengers > 1) {
+            event.target.parentElement.remove()
+            this.fieldsTargets.forEach((container, index) => {
+                container.querySelector("b").innerText = `Passenger ${index + 1}: `
+            })
+        }
+    }
+
     get numPassengers() {
-        return this.element.querySelectorAll("li").length
+        return this.fieldsTargets.length
     }
 }

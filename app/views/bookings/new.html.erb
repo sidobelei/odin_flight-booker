@@ -12,8 +12,9 @@
         <button type="button" data-action="passenger-field#add">Add Passenger</button><br><br>
         <div class="passenger-fields-container">
             <%= form.fields_for :passengers do |passengers_form| %>
-                <div class="passenger-field-container">
+                <div class="passenger-field-container" data-passenger-field-target="fields">
                     <b><%= "Passenger #{passengers_form.index + 1}: " %></b>
+                    <button type="button" style="margin-left: 100px;" data-action="passenger-field#remove">Remove</button>
                     <li>
                         <%= passengers_form.label :name %><br>
                         <%= passengers_form.text_field :name %><br>
@@ -26,8 +27,9 @@
         </div>
         <template data-passenger-field-target="template">
             <%= form.fields_for :passenger do |passengers_form| %>
-                <div class="passenger-field-container">
+                <div class="passenger-field-container" data-passenger-field-target="fields">
                     <b></b>
+                    <button type="button" style="margin-left: 100px;" data-action="passenger-field#remove">Remove</button>
                     <li>
                         <%= passengers_form.label :name %><br>
                         <%= passengers_form.text_field :name %><br>
