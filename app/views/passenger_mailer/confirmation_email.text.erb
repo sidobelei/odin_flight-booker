@@ -1,0 +1,11 @@
+Hello <%= @passenger.name %>!
+===============================================
+You have successfully booked your ticket! 
+
+Booking Details:
+Flight: From <%= @arrival_flight %> To <%= @departure_flight %>
+Date: <%= @date.to_datetime.to_fs(:long) %>
+Booking Number: <%= @booking_number %>
+
+See you soon,
+Flight Booker
